@@ -13,10 +13,22 @@ import { ApiService } from '../api.service';
 })
 export class ApiPage implements OnInit {
 
+  data: any[] = [];
   constructor(private api: ApiService) { }
 
   ngOnInit() {
+    this.llenarDatos()
   }
+
+  llenarDatos(){
+    this.api.getPosts().subscribe( data => {
+      this.data = data;
+      console.log(this.data);
+    })
+
+  }
+    
+
 
    
 }
