@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
+  nombre = localStorage.getItem("nombre")
+
   constructor() {}
 
 }

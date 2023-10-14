@@ -10,19 +10,21 @@
     </div>
     <br>
 
+
     <ion-list lines="full" class="ion-no-margin">
       <ion-item>
         <ion-label position="stacked">Usuario</ion-label>
-
+        <ion-input clearInput input-mode="text" [(ngModel)]="nombreUsuario" minlength="3" required></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Contraseña</ion-label>
-       
+        <ion-input clearInput input-mode="tel" [(ngModel)]="contrasena" minlength="4" type="password"
+          required></ion-input>
       </ion-item>
 
     </ion-list>
 
-    <ion-button expand="full" shape="round" fill="solid" color="primary" >
+    <ion-button expand="full" shape="round" fill="solid" color="primary" (click)="ingreso()">
       Iniciar Sesión
     </ion-button>
 
@@ -30,6 +32,7 @@
       <ion-button fill="clear" expand="block" color="dark">¿Olvidaste tu
         contraseña?</ion-button>
     </div>
+
   </div>
 
 
