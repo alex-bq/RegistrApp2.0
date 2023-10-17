@@ -1,0 +1,37 @@
+/* Centra todo el contenido vertical y horizontalmente */
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    max-width: 375px; /* Ajusta el tamaño máximo para el iPhone 8 */
+    min-width: 230px;
+
+    margin: 0 auto; /* Centra horizontalmente el contenedor */
+    width: 100%; /* Ajusta el ancho del contenedor al tamaño de la ventana */
+  }
+  
+  /* Establece un tamaño máximo y el tamaño real de la imagen */
+  ion-img {
+    width: auto; /* La imagen mantendrá su tamaño real */
+    max-width: 100%; /* La imagen no superará su tamaño real */
+    min-width: 230px;
+    height: auto;
+  }
+  
+  /* Estilo para los elementos del formulario */
+  ion-list {
+    width: 80%; /* Ajusta el ancho del formulario según tus preferencias */
+  }
+  
+  /* Estilo para los botones */
+  ion-button {
+    /* Agrega tus estilos personalizados aquí */
+  }
+  
+  /* Estilo para el botón "Olvidaste tu contraseña" */
+  .ion-text-center ion-button {
+    /* Agrega tus estilos personalizados aquí */
+  }
+  
