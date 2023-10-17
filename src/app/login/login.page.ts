@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Router , NavigationExtras} from '@angular/router';
+import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -11,62 +10,47 @@ import { AlertController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private router: Router, private alertController: AlertController) { }
+  constructor(private router: Router, private alertController: AlertController, public menuCrtl: MenuController) { }
 
-  nombreUsuario: any;
-  contrasena: any;
+  nombreUsuario: string = '';
+  contrasena: string = '';
 
-  ingreso(){
-    if(this.nombreUsuario==="calfun" && this.contrasena==="calfun"){
-      localStorage.setItem("nombre",this.nombreUsuario)
+  ingreso() {
+    const nombre: string = this.nombreUsuario.trim();
+    const contrasena: string = this.contrasena.trim();
 
-      this.router.navigate(['/home'], {queryParams: {data:this.nombreUsuario}})
+    const credencialesValidas: { [key: string]: string } = {
+      calfun: 'marico',
+      german: 'culo',
+      alex: 'alex',
+      andres: 'fufu',
+      juan: '321',
+      andrus: '123',
+    };
+
+    if (credencialesValidas[nombre] === contrasena) {
+      localStorage.setItem('nombre', nombre);
+      this.router.navigate(['/home']);
+    } else {
+      this.error();
     }
-    else if(this.nombreUsuario==="german" && this.contrasena==="german"){
-      localStorage.setItem("nombre",this.nombreUsuario)
 
-      this.router.navigate(['/home'], {queryParams: {data:this.nombreUsuario}})
-    }
-    else if(this.nombreUsuario==="hettel" && this.contrasena==="hettel"){
-      localStorage.setItem("nombre",this.nombreUsuario)
-
-      this.router.navigate(['/home'], {queryParams: {data:this.nombreUsuario}})
-    }
-
-    else if(this.nombreUsuario==="andres" && this.contrasena==="andres"){
-      localStorage.setItem("nombre",this.nombreUsuario)
-
-      this.router.navigate(['/home'], {queryParams: {data:this.nombreUsuario}})
-    }
-    else if(this.nombreUsuario==="juan" && this.contrasena==="juan"){
-      localStorage.setItem("nombre",this.nombreUsuario)
-
-      this.router.navigate(['/home'], {queryParams: {data:this.nombreUsuario}})
-    }
-    else if(this.nombreUsuario==="andrus" && this.contrasena==="andrus"){
-      localStorage.setItem("nombre",this.nombreUsuario)
-
-      this.router.navigate(['/home'], {queryParams: {data:this.nombreUsuario}})
-    }
-    else{
-       this.error();
-    }
-    this.nombreUsuario="";
-    this.contrasena="";
+    this.nombreUsuario = '';
+    this.contrasena = '';
   }
 
-  
-
-  async error(){
+  async error() {
     const alert = await this.alertController.create({
       header: 'Datos incorrectos',
       message: `El usuario o la contraseña que proporcionó no existe.`,
       buttons: ['Volver a intentar']
-    })
+    });
 
     await alert.present();
   }
+
   ngOnInit() {
   }
 
+  
 }
