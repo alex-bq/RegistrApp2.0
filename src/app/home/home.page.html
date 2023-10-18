@@ -1,21 +1,25 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
+  <ion-toolbar color="warning">
+    <ion-buttons slot="start">
+      <ion-buttons slot="start">
+        <ion-menu-button auto-hide="false"></ion-menu-button>
+      </ion-buttons>
+    </ion-buttons>
+    <ion-title>RegitrApp</ion-title>
 
-    </ion-title>
 
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">RegitrApp</ion-title>
-    </ion-toolbar>
 
 
-  </ion-header>
   <h2 class="ion-text-center">Bienvenido {{ nombre }}!</h2>
 
   <div>
