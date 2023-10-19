@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { MenuController } from '@ionic/angular';
+import { StorageService } from '../storage.service';
+
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,7 @@ import { MenuController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private router: Router, private alertController: AlertController, public menuCrtl: MenuController) { }
+  constructor(private router: Router, private alertController: AlertController, public menuCrtl: MenuController,private storageService: StorageService) { }
 
   nombreUsuario: string = '';
   contrasena: string = '';
@@ -20,8 +22,8 @@ export class LoginPage implements OnInit {
     const contrasena: string = this.contrasena.trim();
 
     const credencialesValidas: { [key: string]: string } = {
-      calfun: 'marico',
-      german: 'culo',
+      calfun: 'perdon',
+      german: 'poto',
       alex: 'alex',
       andres: 'fufu',
       juan: '321',
@@ -49,7 +51,18 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
+  async ionViewWillEnter() {
+    // Este evento se dispara cuando la página se va a mostrar
+
+    // Ejemplo de uso del servicio
+    await this.storageService.set('name', 'Mr. Ionitron');
+    
+    const name = await this.storageService.get('name');
+    console.log(name); // Debería imprimir "Mr. Ionitron"
+  }
+
   ngOnInit() {
+    
   }
 
   

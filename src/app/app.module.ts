@@ -8,11 +8,18 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
+import { IonicStorageModule } from '@ionic/storage-angular';
+//import { CordovaSQLiteDriver } from 'localforage-cordovasqlitedriver';
+//
 
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule,IonicStorageModule.forRoot({
+    name: '__mydb',
+    driverOrder: ['sqlite', 'indexeddb', 'websql', 'localstorage']
+  })],
+  
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
