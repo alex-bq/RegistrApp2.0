@@ -25,7 +25,13 @@ export class ApiService {
   constructor(private http:HttpClient) { }
 
   getPosts():Observable<any>{
-    return this.http.get(this.apiURL+'/posts/').pipe(retry(3));
+    return this.http.get(this.apiURL+'/photos/').pipe(retry(3));
+  }
+
+  getdata<T> (url : string)
+  {
+    url = 'https://api.thecatapi.com/v1/images/search?limit=10'
+    return this.http.get<T[]>(url);
   }
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -12,12 +13,13 @@ import { ApiService } from '../api.service';
   styleUrls: ['./api.page.scss'],
 })
 export class ApiPage implements OnInit {
-
+  getdata:any[]=[];
   data: any[] = [];
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private http :HttpClient) { }
 
   ngOnInit() {
     this.llenarDatos()
+    this.getData()
   }
 
   llenarDatos(){
@@ -27,6 +29,18 @@ export class ApiPage implements OnInit {
     })
 
   }
+
+  getData(){
+    this.api.getdata<any[]>("").subscribe(data => {
+      this.getdata = data
+      console.log(this.getdata);
+    }
+      
+    )
+  }
+  
+
+
     
 
 
