@@ -63,6 +63,8 @@ export class RecuperarContraPage implements OnInit {
     const loading = await this.loadingCtrl.create({
       message: mensaje,
       duration: 1000,
+      
+      
     });
 
     loading.present();

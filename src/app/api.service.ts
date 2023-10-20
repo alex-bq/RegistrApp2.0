@@ -30,7 +30,7 @@ export class ApiService {
 
   getdata<T> (url : string)
   {
-    url = 'https://api.thecatapi.com/v1/images/search?limit=10'
+    url = 'https://api.thecatapi.com/v1/images/search?limit=1'
     return this.http.get<T[]>(url);
   }
 

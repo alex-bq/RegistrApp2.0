@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router , NavigationExtras} from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,10 +13,13 @@ export class HomePage {
 
   constructor(private router: Router) {}
 
-  irApi(){
-    this.router.navigate(['/api'])
+  irPerfil(){
+    this.router.navigate(['/perfil'])
+  }
+
+  salir(){
+    this.router.navigate(['/login'])
   }
 
   
-
 }

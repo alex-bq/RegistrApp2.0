@@ -4,15 +4,14 @@ import { HttpClient } from '@angular/common/http';
 
 
 
-
- 
-
 @Component({
-  selector: 'app-api',
-  templateUrl: './api.page.html',
-  styleUrls: ['./api.page.scss'],
+  selector: 'app-perfil',
+  templateUrl: './perfil.page.html',
+  styleUrls: ['./perfil.page.scss'],
 })
-export class ApiPage implements OnInit {
+export class PerfilPage implements OnInit {
+  nombre = localStorage.getItem("nombre")
+
   getdata:any[]=[];
   data: any[] = [];
   constructor(private api: ApiService, private http :HttpClient) { }
@@ -38,11 +37,5 @@ export class ApiPage implements OnInit {
       
     )
   }
-  
 
-
-    
-
-
-   
 }

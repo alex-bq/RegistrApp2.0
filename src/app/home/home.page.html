@@ -1,15 +1,17 @@
 <ion-header>
   <ion-toolbar color="warning">
+
     <ion-buttons slot="start">
-      <ion-buttons slot="start">
-        <ion-menu-button auto-hide="false"></ion-menu-button>
+      <ion-buttons (click)="salir()">
+        <ion-icon slot="icon-only" name="exit-outline"></ion-icon>
       </ion-buttons>
     </ion-buttons>
-    <ion-title>RegitrApp</ion-title>
+
+    <ion-title>RegistrApp</ion-title>
 
 
     <ion-buttons slot="end">
-      <ion-button>
+      <ion-button (click)="irPerfil()">
         <ion-icon slot="icon-only" name="person-circle"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -20,25 +22,21 @@
 <ion-content [fullscreen]="true">
 
 
-  <h2 class="ion-text-center">Bienvenido {{ nombre }}!</h2>
 
-  <div>
+  <div class="ion-text-center ion-padding-top">
+    <h2 class="ion-text-center">Bienvenido {{ nombre }}!</h2>
 
+    <ion-button class="ion-text-center" id="boton" color="warning">Tomar asistencia</ion-button>
 
-    <br><br>
+    <h1 class="ion-text-center">Asignaturas</h1>
 
-    <ion-button class="boton" color="warning">Tomar asistencia</ion-button>
-    <ion-button class="boton" (click)="irApi()">Api</ion-button>
-
-    <h1>Asignaturas</h1>
-    <div class="ion-text-center ion-padding-top">
-      <ion-button fill="clear" expand="block" color="dark">Portafolio</ion-button>
-      <ion-button fill="clear" expand="block" color="dark">Inglés</ion-button>
-      <ion-button fill="clear" expand="block" color="dark">Religión</ion-button>
-      <ion-button fill="clear" expand="block" color="dark">Programación</ion-button>
-    </div>
-
+    <ion-button fill="clear" expand="block" color="dark">Portafolio</ion-button>
+    <ion-button fill="clear" expand="block" color="dark">Inglés</ion-button>
+    <ion-button fill="clear" expand="block" color="dark">Religión</ion-button>
+    <ion-button fill="clear" expand="block" color="dark">Programación</ion-button>
   </div>
+
+
 
 
 

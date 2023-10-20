@@ -4,13 +4,22 @@
     font-family: 'Lato', sans-serif;  
 }
 
+#salirbtn{
+  font-size: 2rem;
+  padding-left: 15px;
+}
+
+#iconoPerfil{
+  font-size: 2rem;
+  padding-right: 15px;
+}
 #container {
   text-align: center;
 
   position: absolute;
   left: 0;
   right: 0;
-  top: 50%;
+  top: 70%;
   transform: translateY(-50%);
 }
 
