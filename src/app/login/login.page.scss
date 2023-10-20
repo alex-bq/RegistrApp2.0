@@ -1,4 +1,9 @@
-/* Centra todo el contenido vertical y horizontalmente */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,900;1,700&display=swap');
+
+* {
+    font-family: 'Lato', sans-serif;  
+}
+
 .login {
     display: flex;
     flex-direction: column;
@@ -12,26 +17,20 @@
     width: 100%; 
   }
   
-  /* Establece un tamaño máximo y el tamaño real de la imagen */
   ion-img {
-    width: auto; /* La imagen mantendrá su tamaño real */
-    max-width: 100%; /* La imagen no superará su tamaño real */
+    width: auto; 
+    max-width: 100%; 
     min-width: 230px;
     height: auto;
+    padding-bottom: 50px;
+    padding-top: 80px;
+
   }
   
-  /* Estilo para los elementos del formulario */
+
   ion-list {
-    width: 80%; /* Ajusta el ancho del formulario según tus preferencias */
-  }
-  
-  /* Estilo para los botones */
-  ion-button {
-    /* Agrega tus estilos personalizados aquí */
-  }
-  
-  /* Estilo para el botón "Olvidaste tu contraseña" */
-  .ion-text-center ion-button {
-    /* Agrega tus estilos personalizados aquí */
+    width: 80%; 
+    padding-bottom: 70px;
+
   }
   

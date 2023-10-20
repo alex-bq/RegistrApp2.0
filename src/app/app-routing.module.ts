@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'api',
     loadChildren: () => import('./api/api.module').then( m => m.ApiPageModule)
   },
+  {
+    path: 'registro',
+    loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
+  },
 
 
 ];

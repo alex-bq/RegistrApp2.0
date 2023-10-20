@@ -5,6 +5,7 @@ import { MenuController } from '@ionic/angular';
 import { StorageService } from '../storage.service';
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -17,20 +18,14 @@ export class LoginPage implements OnInit {
   nombreUsuario: string = '';
   contrasena: string = '';
 
-  ingreso() {
+  async ingreso() {
     const nombre: string = this.nombreUsuario.trim();
     const contrasena: string = this.contrasena.trim();
 
-    const credencialesValidas: { [key: string]: string } = {
-      calfun: 'perdon',
-      german: 'poto',
-      alex: 'alex',
-      andres: 'fufu',
-      juan: '321',
-      andrus: '123',
-    };
+    // Obtener la contraseña almacenada para el nombre de usuario
+    const storedPassword = await this.storageService.get(nombre);
 
-    if (credencialesValidas[nombre] === contrasena) {
+    if (storedPassword && storedPassword === contrasena) {
       localStorage.setItem('nombre', nombre);
       this.router.navigate(['/home']);
     } else {
@@ -49,16 +44,17 @@ export class LoginPage implements OnInit {
     });
 
     await alert.present();
+
+  }
+
+  irRecuperarContra(){
+    this.router.navigate(['/recuperar-contra'])
   }
 
   async ionViewWillEnter() {
-    // Este evento se dispara cuando la página se va a mostrar
-
-    // Ejemplo de uso del servicio
-    await this.storageService.set('name', 'Mr. Ionitron');
     
-    const name = await this.storageService.get('name');
-    console.log(name); // Debería imprimir "Mr. Ionitron"
+    await this.storageService.set('admin', 'admin');
+    
   }
 
   ngOnInit() {
@@ -67,3 +63,7 @@ export class LoginPage implements OnInit {
 
   
 }
+
+
+
+

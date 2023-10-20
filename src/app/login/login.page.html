@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar color="warning">
 
   </ion-toolbar>
@@ -27,13 +27,14 @@
 
     </ion-list>
 
-    <ion-button expand="full" shape="round" fill="solid" color="primary" (click)="ingreso()">
+    <ion-button expand="full" shape="round" fill="solid" color="warning" (click)="ingreso()">
       Iniciar Sesión
     </ion-button>
 
     <div class="ion-text-center ion-padding-top">
-      <ion-button fill="clear" expand="block" color="dark">¿Olvidaste tu
-        contraseña?</ion-button>
+      <ion-button fill="clear" expand="block" color="dark" (click)="irRecuperarContra()">
+        ¿Olvidaste tu contraseña?
+      </ion-button>
     </div>
 
   </div>
