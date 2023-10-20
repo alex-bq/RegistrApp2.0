@@ -27,6 +27,7 @@ export class LoginPage implements OnInit {
 
     if (storedPassword && storedPassword === contrasena) {
       localStorage.setItem('nombre', nombre);
+      localStorage.setItem('ingresado','true');
       this.router.navigate(['/home']);
     } else {
       this.error();

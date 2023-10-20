@@ -10,9 +10,12 @@ export class NotFoundPage implements OnInit {
 
   constructor(private router: Router) { }
 
+  volver(){
+    this.router.navigate(['/home']);
+
+  }
+
   ngOnInit() {
   }
-  salir(){
-    this.router.navigate(['/login'])
-  }
+
 }
