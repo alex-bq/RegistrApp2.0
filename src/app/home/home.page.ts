@@ -26,17 +26,20 @@ export class HomePage {
     this.mostrarCarga("Salió de la sesión");
 
   }
+  irQR(){
+    this.router.navigate(['/qr'])
+   }
 
   async mostrarCarga(mensaje: string) {
     const loading = await this.loadingCtrl.create({
       message: mensaje,
       duration: 1000,
-      
-      
+
+
     });
 
     loading.present();
   }
 
-  
+
 }

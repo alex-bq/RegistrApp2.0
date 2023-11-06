@@ -39,10 +39,16 @@ const routes: Routes = [
 
   },
   {
+    path: 'qr',
+    loadChildren: () => import('./qr/qr.module').then( m => m.QrPageModule)
+  },
+  {
     path: '**',
     component: NotFoundPage,
     loadChildren: () => import('./not-found/not-found.module').then( m => m.NotFoundPageModule)
   },
+
+
 
 
 
