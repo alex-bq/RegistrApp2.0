@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="warning">
+
+    <ion-buttons slot="start">
+      <ion-back-button color="dark"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Mi Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <div class="padin">
+
+    <p *ngFor="let item of getdata">
+      <img src="{{item.url}}" alt="aaa">
+    </p>
+
+  </div>
+
+  <h2 class="ion-text-center">Holaa {{ nombre }}!!</h2>
+
+
+
+
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="warning">
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="warning">
+
+    <ion-buttons slot="start">
+      <ion-buttons (click)="salir()">
+        <ion-icon slot="icon-only" name="exit-outline"></ion-icon>
+      </ion-buttons>
+    </ion-buttons>
+
+    <ion-title>RegistrApp</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="irPerfil()">
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+
+  <div class="ion-text-center ion-padding-top">
+
+    <ion-card>
+      <img alt="Silhouette of mountains" src="https://img.freepik.com/vector-premium/profesor-sonriente-que-senala-pizarra-blanco-personaje-dibujos-animados-aula-proceso-educativo_71593-226.jpg?size=626&ext=jpg" />
+      <ion-card-header>
+        <ion-card-title>Bienvenido Profesor {{ nombre }} </ion-card-title>
+        <ion-card-subtitle>Espero que tenga un buen dia</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <ion-button class="ion-text-center" id="boton" color="warning">Tomar asistencia</ion-button>
+        
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+  
+    
+      <ion-card-content>
+        Duoc
+      </ion-card-content>
+    
+      <ion-button fill="clear"><a href="https://www.duoc.cl/">Mas Informacion</a></ion-button>
+
+    </ion-card>
+
+   
+
+
+  </div>
+
+

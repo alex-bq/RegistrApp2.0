@@ -16,6 +16,7 @@ export class RecuperarContraPage implements OnInit {
   nombreUsuario: string = '';
   nuevaContra: string = '';
   repetirContra: string = '';
+  rol: string= '';
 
   
 
@@ -32,21 +33,27 @@ export class RecuperarContraPage implements OnInit {
   
     // Aquí puedes agregar lógica para verificar si el nombre de usuario existe en tu sistema.
     const usuarioExistente = await this.storageService.get(usuarioIngresado);
-    
-    if (usuarioExistente == null) {
+  
+    if (!usuarioExistente || usuarioExistente.length === 0) {
       this.mostrarError('El nombre de usuario no existe.');
       return;
     }
-    
+  
+    // Guarda el rol existente antes de eliminar el usuario
+    const rolExistente: string = await this.storageService.obtenerRol(usuarioIngresado);
+  
+    // Elimina el usuario
     await this.storageService.remove(usuarioIngresado);
-
+  
     // Si el nombre de usuario existe y las contraseñas coinciden, procede a cambiar la contraseña.
     // Aquí puedes llamar a una función o servicio que realice la recuperación de contraseña.
-    await this.storageService.set(usuarioIngresado, this.nuevaContra);
+    await this.storageService.agregar(usuarioIngresado, this.nuevaContra, rolExistente);
+  
     // Por ahora, solo mostraremos un mensaje en la consola.
     await this.mostrarCarga("Contraseña recuperada con éxito");
     await this.router.navigate(['/login']);
   }
+  
 
 
   async mostrarError(mensaje: string) {

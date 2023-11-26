@@ -17,25 +17,45 @@ export class LoginPage implements OnInit {
 
   nombreUsuario: string = '';
   contrasena: string = '';
-
-  async ingreso() {
-    const nombre: string = this.nombreUsuario.trim();
-    const contrasena: string = this.contrasena.trim();
-
-    // Obtener la contraseña almacenada para el nombre de usuario
-    const storedPassword = await this.storageService.get(nombre);
-
-    if (storedPassword && storedPassword === contrasena) {
-      localStorage.setItem('nombre', nombre);
-      localStorage.setItem('ingresado','true');
-      this.router.navigate(['/home']);
-    } else {
+  
+  async ingreso(usuario: string, contrasena: string) {
+    try {
+      const credencialesCorrectas = await this.storageService.validar(usuario, contrasena);
+      
+      if (credencialesCorrectas) {
+        console.log('Credenciales correctas para usuario:', usuario);
+  
+        const rolUsuario = await this.storageService.obtenerRol(usuario);
+    
+        console.log('Rol del usuario:', rolUsuario);
+  
+        if (rolUsuario === 'Estudiante') {
+          localStorage.setItem('nombre', this.nombreUsuario);
+          localStorage.setItem('ingresado','true');
+          this.router.navigate(['/home']);
+        } else {
+          localStorage.setItem('nombre', this.nombreUsuario);
+          localStorage.setItem('ingresadoProfe','true');
+          this.router.navigate(['/home-profe']);
+        }
+    
+        // Limpiar campos de entrada
+        this.nombreUsuario = "";
+        this.contrasena = "";
+    
+      } else {
+        // Credenciales incorrectas
+        console.log('Credenciales incorrectas para usuario:', usuario);
+        this.error();
+      }
+    } catch (error) {
+      // Manejar errores aquí
+      console.error('Error al intentar ingresar:', error);
       this.error();
     }
-
-    this.nombreUsuario = '';
-    this.contrasena = '';
   }
+  
+  
 
   async error() {
     const alert = await this.alertController.create({
@@ -54,12 +74,13 @@ export class LoginPage implements OnInit {
 
   async ionViewWillEnter() {
     
-    await this.storageService.set('admin', 'admin');
+    await this.storageService.agregar('admin', 'admin','admin');
     
   }
 
   ngOnInit() {
-    
+    console.log('Ruta actual:', this.router.url);
+
   }
 
   

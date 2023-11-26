@@ -12,6 +12,7 @@ export class RegistroPage implements OnInit {
 
   nombreUsuario: string = '';
   contrasena: string = '';
+  rol: string = '';
 
   constructor(private storageService: StorageService,private router: Router,private alertController: AlertController) {}
 
@@ -21,6 +22,8 @@ export class RegistroPage implements OnInit {
 async registrar() {
   const nombre: string = this.nombreUsuario.trim();
   const contrasena: string = this.contrasena.trim();
+  const rol: string = this.rol;
+
 
   if (!nombre || nombre.length < 3) {
     this.mostrarError('El nombre de usuario debe tener al menos 3 caracteres.');
@@ -32,8 +35,13 @@ async registrar() {
     this.mostrarError('El nombre de usuario ya existe.');
     return;
   }
+  if (rol == ''){
+    this.mostrarError('Seleccione un rol')
+    
+    return;
+  }
 
-  this.storageService.set(nombre, contrasena);
+  await this.storageService.agregar(nombre, contrasena, rol);
   this.router.navigate(['/login'])
 
 }

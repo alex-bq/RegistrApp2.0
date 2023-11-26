@@ -15,5 +15,10 @@
     <ion-input [(ngModel)]="contrasena" type="password"></ion-input>
   </ion-item>
 
+  <ion-radio-group name="rol" value="rol" style="margin-left: 30%;" [(ngModel)]="rol">
+    <ion-radio value="Estudiante" color="success">Estudiante</ion-radio>
+    <ion-radio value="Docente" color="success" style="margin-left: 10%;">Profesor</ion-radio>
+  </ion-radio-group>
+
   <ion-button expand="full" (click)="registrar()" color="warning">Registrar</ion-button>
 </ion-content>

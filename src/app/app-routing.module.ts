@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NoIngresadoGuard } from './no-ingresado.guard';
 import { IngresadoGuard } from './ingresado.guard';
 import { NotFoundPage } from './not-found/not-found.page';
+import { IngresadoProfeGuard } from './ingresado-profe.guard';
 
 const routes: Routes = [
   {
@@ -39,14 +40,36 @@ const routes: Routes = [
 
   },
   {
+    path: 'perfil-profe',
+    loadChildren: () => import('./perfil-profe/perfil-profe.module').then( m => m.PerfilProfePageModule),
+    canActivate:[IngresadoProfeGuard]
+
+  },
+  {
     path: 'qr',
     loadChildren: () => import('./qr/qr.module').then( m => m.QrPageModule)
+  },
+  {
+    path: 'home-profe',
+    loadChildren: () => import('./home-profe/home-profe.module').then( m => m.HomeProfePageModule),
+    canActivate:[IngresadoProfeGuard]
+
+  },
+  {
+    path: 'asignaturas',
+    loadChildren: () => import('./asignaturas/asignaturas.module').then( m => m.AsignaturasPageModule),
+    canActivate: [IngresadoGuard]
+
   },
   {
     path: '**',
     component: NotFoundPage,
     loadChildren: () => import('./not-found/not-found.module').then( m => m.NotFoundPageModule)
   },
+  
+
+
+
 
 
 

@@ -19,7 +19,12 @@ export class HomePage {
     this.router.navigate(['/perfil'])
   }
 
+  irAsignaturas(){
+    this.router.navigate(['/asignaturas'])
+  }
+
   salir(){
+    localStorage.removeItem('ingresadoProfe')
     localStorage.removeItem('ingresado')
     localStorage.removeItem('nombre')
     this.router.navigate(['/login'])
