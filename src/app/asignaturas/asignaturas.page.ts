@@ -2,6 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+
 
 @Component({
   selector: 'app-asignaturas',
@@ -10,7 +12,9 @@ import { LoadingController } from '@ionic/angular';
 })
 export class AsignaturasPage implements OnInit {
 
-  constructor(private router: Router,private loadingCtrl: LoadingController) { }
+  code: any;
+
+  constructor(private router: Router,private loadingCtrl: LoadingController,private bc:BarcodeScanner) { }
 
   irPerfil(){
     this.router.navigate(['/perfil'])
@@ -34,9 +38,16 @@ export class AsignaturasPage implements OnInit {
     loading.present();
   }
 
+  qr(){
+    this.bc.scan().then(bcdata => {
+      this.code = bcdata.text;
+      console.log('BarCode data : ', this.code);
+    }).catch(e => {
+      console.log('error', e)
+    })
+  }
+
   ngOnInit() {
   }
-  irQR(){
-    this.router.navigate(['/qr'])
-   }
+  
 }

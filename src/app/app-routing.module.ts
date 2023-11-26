@@ -46,10 +46,6 @@ const routes: Routes = [
 
   },
   {
-    path: 'qr',
-    loadChildren: () => import('./qr/qr.module').then( m => m.QrPageModule)
-  },
-  {
     path: 'home-profe',
     loadChildren: () => import('./home-profe/home-profe.module').then( m => m.HomeProfePageModule),
     canActivate:[IngresadoProfeGuard]
@@ -67,13 +63,6 @@ const routes: Routes = [
     loadChildren: () => import('./not-found/not-found.module').then( m => m.NotFoundPageModule)
   },
   
-
-
-
-
-
-
-
 
 ];
 

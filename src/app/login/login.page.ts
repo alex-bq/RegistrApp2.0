@@ -71,6 +71,9 @@ export class LoginPage implements OnInit {
   irRecuperarContra(){
     this.router.navigate(['/recuperar-contra'])
   }
+  irRegistrar(){
+    this.router.navigate(['/registro'])
+  }
 
   async ionViewWillEnter() {
     
