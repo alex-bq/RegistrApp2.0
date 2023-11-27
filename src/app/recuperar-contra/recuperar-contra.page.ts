@@ -23,15 +23,17 @@ export class RecuperarContraPage implements OnInit {
   constructor(private storageService: StorageService,private router: Router,private alertController: AlertController,private loadingCtrl: LoadingController) {}
 
   async recuperarContra() {
-    // Verifica que las contraseñas coincidan
+    if (this.nuevaContra.length < 3) {
+      this.mostrarError('La contraseña debe tener al menos 3 caracteres');
+      return;
+    }
     if (this.nuevaContra !== this.repetirContra) {
       this.mostrarError('Las contraseñas no coinciden');
-      return; // Detén la recuperación si las contraseñas no coinciden
+      return; 
     }
   
     const usuarioIngresado: string = this.nombreUsuario;
   
-    // Aquí puedes agregar lógica para verificar si el nombre de usuario existe en tu sistema.
     const usuarioExistente = await this.storageService.get(usuarioIngresado);
   
     if (!usuarioExistente || usuarioExistente.length === 0) {
@@ -39,20 +41,16 @@ export class RecuperarContraPage implements OnInit {
       return;
     }
   
-    // Guarda el rol existente antes de eliminar el usuario
     const rolExistente: string = await this.storageService.obtenerRol(usuarioIngresado);
   
-    // Elimina el usuario
     await this.storageService.remove(usuarioIngresado);
   
-    // Si el nombre de usuario existe y las contraseñas coinciden, procede a cambiar la contraseña.
-    // Aquí puedes llamar a una función o servicio que realice la recuperación de contraseña.
     await this.storageService.agregar(usuarioIngresado, this.nuevaContra, rolExistente);
   
-    // Por ahora, solo mostraremos un mensaje en la consola.
     await this.mostrarCarga("Contraseña recuperada con éxito");
     await this.router.navigate(['/login']);
   }
+  
   
 
 

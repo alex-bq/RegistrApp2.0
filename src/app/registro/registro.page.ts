@@ -31,6 +31,10 @@ async registrar() {
     this.mostrarError('El nombre de usuario debe tener al menos 3 caracteres.');
     return;
   }
+  if (this.contrasena.length < 3) {
+    this.mostrarError('La contraseña debe tener al menos 3 caracteres');
+    return;
+  }
 
   const usuarioExistente = await this.storageService.get(nombre);
   if (usuarioExistente) {
@@ -44,6 +48,8 @@ async registrar() {
   }
 
   await this.storageService.agregar(nombre, contrasena, rol);
+  await this.mostrarCarga("Registrado con éxito");
+
   this.router.navigate(['/login'])
 
 }
