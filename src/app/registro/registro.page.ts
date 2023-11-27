@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../storage.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-registro',
@@ -14,7 +16,7 @@ export class RegistroPage implements OnInit {
   contrasena: string = '';
   rol: string = '';
 
-  constructor(private storageService: StorageService,private router: Router,private alertController: AlertController) {}
+  constructor(private loadingCtrl: LoadingController,private storageService: StorageService,private router: Router,private alertController: AlertController) {}
 
 
 
@@ -54,6 +56,17 @@ async mostrarError(mensaje: string) {
   });
 
   await alert.present();
+}
+
+async mostrarCarga(mensaje: string) {
+  const loading = await this.loadingCtrl.create({
+    message: mensaje,
+    duration: 1000,
+    
+    
+  });
+
+  loading.present();
 }
 
   ngOnInit() {

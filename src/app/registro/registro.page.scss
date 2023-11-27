@@ -3,3 +3,44 @@
 * {
     font-family: 'Lato', sans-serif;  
 }
+
+
+.bold {
+    font-weight: bolder;
+}
+
+.recuperar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    max-width: 375px; 
+    min-width: 230px;
+
+    margin: 0 auto; 
+    width: 100%; 
+  }
+  
+  ion-img {
+    width: auto; 
+    max-width: 100%; 
+    min-width: 230px;
+    height: auto;
+    padding-bottom: 30px;
+    }
+  
+  
+  
+  .label{
+    padding: 10px;
+
+  }
+
+  ion-button {
+    padding-top: 30px;
+
+  }
+  
+
+  

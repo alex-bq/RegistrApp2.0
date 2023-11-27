@@ -12,10 +12,22 @@
     <ion-list>
       <ion-item *ngFor="let asignatura of asignaturas">
         <ion-label>{{ asignatura.nombre }}</ion-label>
-        <ion-button color="success" slot="end" (click)="generarQR(asignatura.codigo)">
+        <ion-button color="success" slot="end" (click)="generarQr('Presente '+asignatura.codigo)">
           Generar QR
         </ion-button>
       </ion-item>
     </ion-list>
   </div>
+
+
+  <ion-card *ngIf="mostrarTarjeta">
+    <ion-card-header>
+      Código QR Generado
+    </ion-card-header>
+    <ion-card-content class="centrar-qr">
+      <ion-img [src]="qrCode"></ion-img>
+    </ion-card-content>
+  </ion-card>
+
+  
 </ion-content>

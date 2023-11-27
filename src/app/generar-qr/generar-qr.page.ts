@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { Component, OnInit } from '@angular/core';
+import { AppComponent } from '../app.component';
+import { HttpClient } from '@angular/common/http';
+import { QrService } from '../qr.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-generar-qr',
@@ -15,13 +18,25 @@ export class GenerarQrPage {
     { nombre: 'PROCESO DE PORTAFOLIO', codigo: 'APY4461', color: 'warning' },
     { nombre: 'PROGRAMACION', codigo: 'APY3461', color: 'danger' },
   ];
+  qrCode: string = "";
+  mostrarTarjeta = false;
 
-  constructor(private barcodeScanner: BarcodeScanner) {}
+  constructor(private router: Router,private qr:QrService,public appComponent: AppComponent,private http: HttpClient) { }
 
-  generarQR(asignatura: string) {
-
-
-
-    console.log(`Generando QR para la asignatura: ${asignatura}`);
+  generarQr(data:string) {
+    this.qr.generateQrCode(data).subscribe(
+      (response) => {
+        if (response instanceof Blob) {
+          this.mostrarTarjeta = true;
+          this.qrCode = URL.createObjectURL(response);
+          console.log(this.qrCode);
+        } else {
+          console.error('Invalid response format');
+        }
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 }
