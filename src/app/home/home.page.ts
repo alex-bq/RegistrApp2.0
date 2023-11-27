@@ -34,6 +34,9 @@ export class HomePage {
   irQR(){
     this.router.navigate(['/qr'])
    }
+   irAsistencia(){
+    this.router.navigate(['/asistencia'])
+   }
 
   async mostrarCarga(mensaje: string) {
     const loading = await this.loadingCtrl.create({

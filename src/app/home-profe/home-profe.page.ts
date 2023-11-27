@@ -35,8 +35,7 @@ export class HomeProfePage implements OnInit {
   }
 
   ngOnInit() {
-  }
-  irQR(){
-    this.router.navigate(['/qr'])
+  }  irGenerarQr(){
+    this.router.navigate(['/generar-qr'])
    }
 }

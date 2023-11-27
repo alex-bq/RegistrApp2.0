@@ -58,10 +58,19 @@ const routes: Routes = [
 
   },
   {
+    path: 'generar-qr',
+    loadChildren: () => import('./generar-qr/generar-qr.module').then( m => m.GenerarQrPageModule),
+    canActivate:[IngresadoProfeGuard]
+  },
+  {
     path: '**',
     component: NotFoundPage,
     loadChildren: () => import('./not-found/not-found.module').then( m => m.NotFoundPageModule)
   },
+  
+
+  
+
   
 
 ];

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 
-
 @Injectable({
   providedIn: 'root' 
 })
@@ -12,14 +11,12 @@ export class StorageService {
   }
 
   async init() {
-    
     const storage = await this.storage.create();
-    
     this.storage = storage;
   }
 
-  async agregar(user: any,pass: any, rol:any){
-    await this.storage.set(user,{ user, pass, rol})
+  async agregar(user: any, pass: any, rol: any) {
+    await this.storage.set(user, { user, pass, rol });
   }
 
   async obtener(key: string) {
@@ -30,6 +27,7 @@ export class StorageService {
     datos.push(userData.rol)
     return datos;
   }
+
   async get(key: string) {
     return this.storage.get(key);
   }
@@ -44,7 +42,7 @@ export class StorageService {
     }
   }
 
-  async obtenerRol(usuario: string){
+  async obtenerRol(usuario: string) {
     const userData = await this.storage.get(usuario);
     return userData ? userData.rol : null;
   }
@@ -65,6 +63,34 @@ export class StorageService {
     return this.storage.length();
   }
 
+  // Nuevo método para agregar asistencia
+  async agregarAsistencia(usuario: string, asignatura: string, estado: string) {
+    // Obtener el historial de asistencias del usuario, si existe
+    const historialAsistencias = (await this.storage.get(usuario + '_asistencias')) || [];
+
+    // Agregar la nueva asistencia al historial
+    historialAsistencias.push({ asignatura, estado, fecha: new Date() });
+
+    // Actualizar el historial en el almacenamiento
+    await this.storage.set(usuario + '_asistencias', historialAsistencias);
+  }
   
+  async obtenerAsistencias(usuario: string): Promise<any[]> {
+    // Obtener el historial de asistencias del usuario
+    return (await this.storage.get(usuario + '_asistencias')) || [];
+  }
+
+  async agregarMensajeQR(codigo: string, mensaje: string) {
+    await this.storage.set(codigo, { codigo, mensaje });
+  }
+
+  async obtenerMensajeQR(codigo: string) {
+    const qrData = await this.storage.get(codigo);
+    return qrData ? qrData.mensaje : null;
+  }
+
+  async removeMensajeQR(codigo: string) {
+    return this.storage.remove(codigo);
+  }
 
 }
