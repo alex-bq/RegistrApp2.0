@@ -9,7 +9,7 @@ export class QrService {
   constructor(private http: HttpClient) { }
 
   generateQrCode(data: string): Observable<any> {
-    const url = `https://api.qrserver.com/v1/create-qr-code/?data=${data}&size=100x100&format=png`;
+    const url = `https://api.qrserver.com/v1/create-qr-code/?data=${data}&size=500x500&format=png`;
     return this.http.get(url, { responseType: 'blob' });
   }
 }
